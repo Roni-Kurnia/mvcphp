@@ -1,0 +1,21 @@
+.htaccess : ini merupakan teknik untuk mengatur akses pada suatu file atau directori 
+            {
+                Option/s {
+                    -Indexes: berfungsi untuk memberikan opsi "selama tidak ada file index di folder tersebut maka tolak aksesnya".
+                    -Multiviews: untuk menghindari kesalahan saat kit memanggil folder atau file dalam folder tertentu.
+                }
+
+                RewriteEngine On {
+                    RewriteCond %{REQUEST_FILENAME} !-d : jika url yang ditulis itu folder/dokument maka akan diabaikan.
+                    RewriteCond %{REQUEST_FILENAME} !-d : mengabaikan permintaaan file yang ditakutkan sama dengan controler dan method.
+                }
+
+                RewriteRule {
+                    RewriteRule ^(.*)$ index.php?url=$1 [L]
+                    ^   : ambil string yang ada di url tepat setelah tempat htaccess
+                    .   : ambil semuanya
+                    *   : ambil satu-satu
+                    $   : sampai selesai
+                    [L] : jangan jalankan rule apapun setelah kondisi terpenuhi  
+                }
+            }
