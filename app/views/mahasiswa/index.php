@@ -1,12 +1,16 @@
+
+<!-- flasher -->
 <div class="row">
     <div class="col-lg-6">
         <?php Flasher::flash() ?>
     </div>
 </div>
 
+
+<!-- tombol -->
 <div class="row">
     <div class="col-lg-6">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fromModal">
+        <button type="button" class="btn btn-primary tambahData" data-toggle="modal" data-target="#fromModal">
             Tambah Data Maahasiswa
         </button>
         <br><br>
@@ -16,24 +20,28 @@
                 <li class="list-group-item ">
                     <?= $mhs['nama']; ?>
                     <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['id'] ?>" class="badge badge-danger float-right ml-1" onclick="return confirm('yakin?')">hapus</a>
-                    <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id'] ?>" class="badge badge-primary float-right ml-1">detail</a>
+                    <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['id'] ?>" class="badge badge-success float-right ml-1 modalUbah" data-toggle="modal" data-target="#fromModal" data-id="<?= $mhs['id']; ?>">ubah</a>
+                    <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id'] ?>" class="badge badge-primary float-right ml-1 modalDetail">detail</a>
                 </li>
             <?php endforeach ?>
         </ul>
     </div>
 </div>
 
+
+<!-- modal -->
 <div class="modal fade" id="fromModal" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="judulModal">Tambah Data Mahasiswa</h5>
+                <h5 class="modal-title" id="judulModal">HTML</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form action="<?= BASEURL; ?>/mahasiswa/tambah" method="post">
+                    <input type="hidden" name="id" id="id">
                     <div class="form-group">
                         <label for="nama">Nama</label>
                         <input type="teks" class="form-control" id="nama" name="nama">
