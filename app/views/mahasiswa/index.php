@@ -1,19 +1,37 @@
 
 <!-- flasher -->
 <div class="row">
-    <div class="col-lg-6">
+    <div style="position: absolute; z-index: 20;" class="col-lg-6">
         <?php Flasher::flash() ?>
     </div>
 </div>
 
-
 <!-- tombol -->
-<div class="row">
+<div class="row mb-3">
     <div class="col-lg-6">
-        <button type="button" class="btn btn-primary tambahData" data-toggle="modal" data-target="#fromModal">
+        <button type="button" class="btn btn-primary tambahData" data-toggle="modal" data-target="#fromModal"  >
             Tambah Data Maahasiswa
         </button>
-        <br><br>
+    </div>
+</div>
+
+<!-- Search -->
+<div class="row mb-3">
+    <div class="col-lg-6">
+        <form action="<?= BASEURL; ?>/mahasiswa/cari" method="post">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Cari mahasiswa..." name="keyword" id="keyword" autocomplete="off ">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="Submit" id="tombolCari">Cari</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- controler model -->
+<div class="row">
+    <div class="col-lg-6">
         <h3>Daftar Mahasiswa</h3>
         <ul class="list-group">
             <?php foreach($data['mhs'] as $mhs) :  ?>
@@ -28,11 +46,10 @@
     </div>
 </div>
 
-
 <!-- modal -->
-<div class="modal fade" id="fromModal" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">
+<div class="modal fade" id="fromModal" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true" >
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="position: absolute; z-index: 40;">
             <div class="modal-header">
                 <h5 class="modal-title" id="judulModal">HTML</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
